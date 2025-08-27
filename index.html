@@ -242,9 +242,13 @@
     [data-animate].in{opacity:1;transform:none}
 
     /* MODERN RETREAT LOCATIONS */
-    .retreat-locations{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:32px;margin:48px 0}
+    .retreat-locations{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;margin:48px 0}
     
-    .retreat-card{background:rgba(255,255,255,.95);border:2px solid rgba(212,175,55,.2);border-radius:24px;padding:32px;backdrop-filter:blur(10px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .4s ease;position:relative;overflow:hidden}
+    /* Enhanced layout for 4 cards */
+    @media(min-width:768px){.retreat-locations{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:1400px){.retreat-locations{grid-template-columns:repeat(4,1fr);gap:24px}}
+    
+    .retreat-card{background:rgba(255,255,255,.95);border:2px solid rgba(212,175,55,.2);border-radius:24px;padding:28px;backdrop-filter:blur(10px);box-shadow:0 20px 40px rgba(0,0,0,.08);transition:all .4s ease;position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column}
     
     .retreat-card::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.08),transparent);transition:left 0.6s ease}
     
@@ -254,42 +258,54 @@
     .retreat-card.coming-soon{opacity:.85;border-color:rgba(100,116,139,.3)}
     .retreat-card.coming-soon:hover{border-color:rgba(100,116,139,.5);transform:translateY(-2px)}
     
-    .retreat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-    .retreat-header h3{margin:0;font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--brand);line-height:1.2}
+    .retreat-header{margin-bottom:16px}
+    .retreat-header h3{margin:0;font-size:clamp(18px,2.5vw,22px);font-weight:700;color:var(--brand);line-height:1.2}
     
-    .location-badge{background:linear-gradient(135deg,var(--brand-2),#f4d03f);color:white;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;box-shadow:0 4px 8px rgba(212,175,55,.3)}
-    
-    .coming-soon-badge{background:linear-gradient(135deg,#64748b,#94a3b8);box-shadow:0 4px 8px rgba(100,116,139,.3)}
-    
-    .retreat-venue{margin-bottom:24px;padding:16px;background:rgba(248,250,252,.8);border-radius:12px;border-left:4px solid var(--brand-2)}
-    .retreat-venue p{margin:0;color:var(--ink-soft);font-size:15px;line-height:1.5}
+    .retreat-venue{margin-bottom:20px;padding:14px;background:rgba(248,250,252,.8);border-radius:12px;border-left:4px solid var(--brand-2);flex-grow:1}
+    .retreat-venue p{margin:0;color:var(--ink-soft);font-size:14px;line-height:1.4}
     .retreat-venue p:not(:last-child){margin-bottom:8px}
+    .retreat-venue small{font-size:12px;opacity:0.8}
     .contact-email{color:var(--brand)!important;font-weight:500;font-size:14px!important}
     
-    .retreat-dates{margin-bottom:24px}
-    .date-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(212,175,55,.15);transition:all .3s ease}
+    .retreat-dates{margin-bottom:20px;flex-grow:1}
+    .date-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(212,175,55,.15);transition:all .3s ease}
     .date-item:last-child{border-bottom:none}
     .date-item:hover{color:var(--brand);transform:translateX(4px)}
     .date-item.coming-soon{opacity:.6}
     
-    .date-label{font-size:14px;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:.02em}
-    .date-value{font-size:15px;font-weight:500;color:var(--ink)}
+    .date-label{font-size:12px;font-weight:600;color:var(--brand);text-transform:uppercase;letter-spacing:.02em}
+    .date-value{font-size:13px;font-weight:500;color:var(--ink)}
     
     .retreat-info{margin-bottom:24px;padding:16px;background:rgba(44,82,130,.05);border-radius:12px;border-left:4px solid var(--brand)}
     .retreat-info p{margin:0;color:var(--ink-soft);font-size:14px;font-style:italic}
     
-    .retreat-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 24px;background:linear-gradient(135deg,var(--brand),#1e3a8a);color:white;border-radius:16px;font-weight:600;text-decoration:none;font-size:16px;box-shadow:0 8px 20px rgba(44,82,130,.3);transition:all .3s ease;width:100%;justify-content:center}
+    .retreat-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:linear-gradient(135deg,var(--brand),#1e3a8a);color:white;border-radius:14px;font-weight:600;text-decoration:none;font-size:14px;box-shadow:0 6px 16px rgba(44,82,130,.3);transition:all .3s ease;width:100%;justify-content:center;margin-top:auto}
     
     .retreat-btn:hover{background:linear-gradient(135deg,#1e3a8a,var(--brand));box-shadow:0 12px 30px rgba(44,82,130,.4);transform:translateY(-2px)}
     
     .coming-soon-btn{background:linear-gradient(135deg,#64748b,#475569);box-shadow:0 8px 20px rgba(100,116,139,.3)}
     .coming-soon-btn:hover{background:linear-gradient(135deg,#475569,#64748b);box-shadow:0 12px 30px rgba(100,116,139,.4)}
     
-    @media(max-width:768px){
+    @media(max-width:767px){
       .retreat-locations{grid-template-columns:1fr;gap:24px}
+      .retreat-card{padding:24px;min-height:auto}
+      .retreat-header{flex-direction:column;gap:12px;text-align:center}
+      .retreat-header h3{font-size:20px}
+    }
+    
+    @media(min-width:768px) and (max-width:1399px){
       .retreat-card{padding:24px}
-      .retreat-header{flex-direction:column;gap:12px}
-      .retreat-header h3{font-size:24px}
+      .retreat-header h3{font-size:18px}
+    }
+    
+    @media(min-width:1400px){
+      .retreat-card{padding:20px;min-height:380px}
+      .retreat-header h3{font-size:16px;line-height:1.3}
+      .retreat-venue{margin-bottom:16px;padding:12px}
+      .retreat-venue p{font-size:13px;line-height:1.3}
+      .date-label{font-size:11px}
+      .date-value{font-size:12px}
+      .retreat-btn{padding:10px 16px;font-size:13px}
     }
 
     /* MODERN FOOTER */
@@ -374,7 +390,7 @@
       <div class="intro-grid">
         <div class="intro-content">
           <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Czym są rekolekcje „Miłość i Prawda"?</h2>
-          <p class="section-lead" style="text-align: left; font-size: clamp(16px, 2.2vw, 20px); line-height: 1.7; color: var(--ink);">To droga trzech spotkań dla małżeństw sakramentalnych, podczas których doświadczysz konferencji prowadzonych przez małżeństwa ze Wspólnoty Emmanuel, grup dzielenia, czasu tylko dla Was dwojga oraz wspólnej modlitwy.</p>
+          <p class="section-lead" style="text-align: left; font-size: clamp(16px, 2.2vw, 20px); line-height: 1.7; color: var(--ink);">To cykl trzech spotkań dla małżeństw sakramentalnych, podczas których weźmiecie udział w praktycznych warsztatach, wysłuchacie doświadczeń innych małżeństw, znajdziecie czas na modlitwę i chwile tylko dla Was dwojga.</p>
           <p style="color: var(--ink-soft); font-size: clamp(15px, 2vw, 18px); line-height: 1.6; margin-top: 20px; font-weight: 500;">Dla każdego małżeństwa – niezależnie od stażu i aktualnych trudności.</p>
         </div>
         <div class="intro-visual">
@@ -498,15 +514,14 @@
       <p class="section-lead">Wybierzcie najbliższą Wam lokalizację i termin</p>
       
       <div class="retreat-locations">
-        <!-- Warszawa -->
+        <!-- Warszawa (jesień) -->
         <div class="retreat-card">
           <div class="retreat-header">
-            <h3>Warszawa</h3>
-            <div class="location-badge">📍 Centrum</div>
+            <h3>Warszawa (jesień '25)</h3>
           </div>
           <div class="retreat-venue">
-            <p>Parafia św. Jakuba Apostoła<br>ul. Grójecka 38</p>
-            <p class="contact-email">📧 mip@emmanuel.info.pl</p>
+            <p>Parafia św. Jakuba Apostoła</p>
+            <p style="margin-top: 12px; font-size: 12px; color: var(--brand); font-weight: 600;">Ania i Michał Kustoszowie<br>📞 694 021 622</p>
           </div>
           <div class="retreat-dates">
             <div class="date-item">
@@ -528,15 +543,14 @@
           </a>
         </div>
 
-        <!-- Repty, Śląsk -->
+        <!-- Tarnowskie Góry, Śląsk -->
         <div class="retreat-card">
           <div class="retreat-header">
-            <h3>Repty, Śląsk</h3>
-            <div class="location-badge">📍 Południe</div>
+            <h3>Tarnowskie Góry, Śląsk</h3>
           </div>
           <div class="retreat-venue">
-            <p>Szczegóły lokalizacji<br>zostaną podane wkrótce</p>
-            <p class="contact-email">📧 mip.poludnie@emmanuel.info.pl</p>
+            <p>Salezjański Ośrodek<br>Szkolno-Wychowawczy</p>
+            <p style="margin-top: 12px; font-size: 12px; color: var(--brand); font-weight: 600;">Monika: 📞 500 478 295<br>Krzysztof: 📞 796 009 894</p>
           </div>
           <div class="retreat-dates">
             <div class="date-item">
@@ -552,8 +566,37 @@
               <span class="date-value">14-15 lutego 2026</span>
             </div>
           </div>
-          <a class="retreat-btn" href="mailto:mip.poludnie@emmanuel.info.pl?subject=Zgłoszenie%20na%20rekolekcje%20Miłość%20i%20Prawda%20(Repty,%20Śląsk%202025/2026)">
+          <a class="retreat-btn" href="mailto:mip.poludnie@emmanuel.info.pl?subject=Zgłoszenie%20na%20rekolekcje%20Miłość%20i%20Prawda%20(Tarnowskie%20Góry,%20Śląsk%202025/2026)">
             <i class="fas fa-envelope"></i>
+            Zapisz nas
+          </a>
+        </div>
+
+        <!-- Warszawa (wiosna 26) -->
+        <div class="retreat-card">
+          <div class="retreat-header">
+            <h3>Warszawa (wiosna '26)</h3>
+          </div>
+          <div class="retreat-venue">
+            <p>Dom Wspólnoty Chemin Neuf<br><small>+ Parafia Niepokalanego Poczęcia NMP</small></p>
+            <p style="margin-top: 12px; font-size: 12px; color: var(--brand); font-weight: 600;">Maria i Bartłomiej Grudnikowie<br>📞 606 558 890</p>
+          </div>
+          <div class="retreat-dates">
+            <div class="date-item">
+              <span class="date-label">WEEKEND I</span>
+              <span class="date-value">14-15 lutego 2026</span>
+            </div>
+            <div class="date-item">
+              <span class="date-label">SOBOTA II</span>
+              <span class="date-value">14 marca 2026</span>
+            </div>
+            <div class="date-item">
+              <span class="date-label">SOBOTA III</span>
+              <span class="date-value">11 kwietnia 2026</span>
+            </div>
+          </div>
+          <a class="retreat-btn" href="https://forms.gle/pVTx3XRLRcNfyPEj7" target="_blank" rel="noopener">
+            <i class="fas fa-edit"></i>
             Zapisz nas
           </a>
         </div>
@@ -562,11 +605,9 @@
         <div class="retreat-card coming-soon">
           <div class="retreat-header">
             <h3>Północny Zachód</h3>
-            <div class="location-badge coming-soon-badge">📍 Wkrótce</div>
           </div>
           <div class="retreat-venue">
-            <p>Lokalizacja i terminy<br>w przygotowaniu</p>
-            <p class="contact-email">📧 mip.zachod@emmanuel.info.pl</p>
+            <p>Lokalizacja w przygotowaniu</p>
           </div>
           <div class="retreat-dates">
             <div class="date-item coming-soon">
